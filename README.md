@@ -18,17 +18,17 @@
 
 ## itemsテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| text          | text       | null: false                    |
-| category      | integer    | null: false                    |
-| condition     | integer    | null: false                    |
-| postage       | integer    | null: false                    |
-| area          | string     | null: false                    |
-| shipping_date | integer    | null: false                    |
-| price         | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| postage_id       | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_date_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -53,7 +53,7 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | post_code        | string     | null: false                    |
-| prefecture       | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
