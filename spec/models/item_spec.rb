@@ -13,7 +13,6 @@ RSpec.describe Item, type: :model do
       end
     end
     context '商品出品ができない場合' do
-
       # 入力欄が空の場合のバリデーション検証
 
       it 'imageが空だと出品できない' do
@@ -62,36 +61,35 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
-      #priceのバリデーション検証
-      
+      # priceのバリデーション検証
+
       it 'priceが全角数字だと出品できない' do
-        @item.price = "１１１１"
+        @item.price = '１１１１'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price out of setting range")
+        expect(@item.errors.full_messages).to include('Price out of setting range')
       end
       it 'priceが299円以下と出品できない' do
         @item.price = 290
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price out of setting range")
+        expect(@item.errors.full_messages).to include('Price out of setting range')
       end
       it 'priceが10,000,000以上だと出品できない' do
-        @item.price = 10,000,000
+        @item.price = 10, 0o00, 0o00
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price out of setting range")
+        expect(@item.errors.full_messages).to include('Price out of setting range')
       end
 
-      #name, descriptionのバリデーション検証
+      # name, descriptionのバリデーション検証
       it 'nameが41文字以上だと出品できない' do
-        @item.name = "a" * 41
+        @item.name = 'a' * 41
         @item.valid?
-        expect(@item.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@item.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'descriptionが1,001文字以上だと出品できない' do
-        @item.description = "a" * 1001
+        @item.description = 'a' * 1001
         @item.valid?
-        expect(@item.errors.full_messages).to include("Description is too long (maximum is 1000 characters)")
+        expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
       end
-    
     end
   end
 end
