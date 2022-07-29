@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   validates :description,      presence: true, length: { maximum: 1000 }
   validates :category_id,      presence: true, numericality: { other_than: 0 , message: "can't be blank" } 
   validates :condition_id,     presence: true, numericality: { other_than: 0 , message: "can't be blank" }
-  validates :postage_id,       numericality: { other_than: 0 , message: "can't be blank" }
+  validates :postage_id,       presence: true, numericality: { other_than: 0 , message: "can't be blank" }
   validates :prefecture_id,    presence: true, numericality: { other_than: 0 , message: "can't be blank" } 
   validates :shipping_date_id, presence: true, numericality: { other_than: 0 , message: "can't be blank" }
   with_options presence: true, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters" } do
