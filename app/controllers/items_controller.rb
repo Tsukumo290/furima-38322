@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    unless user_signed_in?
+      redirect_to  '/users/sign_in'
+    end
   end
 
   def create
