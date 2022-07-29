@@ -3,11 +3,12 @@ class Item < ApplicationRecord
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
+  belongs_to :category
 
 
   validates :name,             presence: true, length: { maximum: 40 }
   validates :description,      presence: true, length: { maximum: 1000 }
-  validates :category_id,      presence: true
+  validates :category_id,      presence: true, numericality: { other_than: 0 , message: "can't be blank" } 
   validates :condition_id,     presence: true
   validates :postage_id,       presence: true
   validates :prefecture_id,    presence: true, numericality: { other_than: 0 , message: "can't be blank" } 
