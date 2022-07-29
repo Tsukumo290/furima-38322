@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :postage
   belongs_to :shipping_date
 
+  validates :image,            presence: true
   validates :name,             presence: true, length: { maximum: 40 }
   validates :description,      presence: true, length: { maximum: 1000 }
   validates :category_id,      presence: true, numericality: { other_than: 0 , message: "can't be blank" } 
