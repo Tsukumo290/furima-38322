@@ -91,14 +91,13 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Description is too long (maximum is 1000 characters)')
       end
 
-      #アソシエーションの確認
+      # アソシエーションの確認
 
       it 'userが紐付いていないと保存できない' do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include('User must exist')
       end
-    
     end
   end
 end
