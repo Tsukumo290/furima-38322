@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :redirect, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @items = Item.order(created_at: :desc)
@@ -43,7 +43,4 @@ class ItemsController < ApplicationController
                                  :shipping_date_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def redirect
-    redirect_to '/users/sign_in' unless user_signed_in?
-  end
 end
