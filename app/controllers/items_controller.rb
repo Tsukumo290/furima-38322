@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
+  before_action :redirect, only: [:new, :edit]
+
   def index
     @items = Item.order(created_at: :desc)
   end
 
   def new
     @item = Item.new
-    redirect_to '/users/sign_in' unless user_signed_in?
   end
 
   def create
@@ -41,4 +42,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :category_id, :condition_id, :postage_id, :prefecture_id,
                                  :shipping_date_id, :price, :image).merge(user_id: current_user.id)
   end
+
+  def redirect
+    redirect_to '/users/sign_in' unless user_signed_in?
+  end
+
 end
