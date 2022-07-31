@@ -78,6 +78,11 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is too short')
       end
+      it 'phone_numberが「10桁以上11桁以内」でないと購入できない' do
+        @order.phone_number = '1234567891011'
+        @order.valid?
+        expect(@order.errors.full_messages).to include('Phone number is too short')
+      end
 
       it 'phone_numberが「10桁以上11桁以内」の半角数値でないと購入できない' do
         @order.phone_number = '０９０１２３４５６７８'
