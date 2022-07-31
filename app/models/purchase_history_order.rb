@@ -1,6 +1,6 @@
 class PurchaseHistoryOrder
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id
+  attr_accessor :post_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,6 +10,7 @@ class PurchaseHistoryOrder
     validates :municipality
     validates :address
     validates :phone_number, format: {with: /\A\d{10,11}\z/ }
+    validates :token
   end
 
   def save
