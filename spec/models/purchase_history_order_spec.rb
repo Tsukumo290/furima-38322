@@ -10,6 +10,10 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
       it '必須項目の入力をすれば購入できる' do
         expect(@order).to be_valid
       end
+      it '建物名を入力しても購入できる' do
+        @order.building_name = "半島"
+        expect(@order).to be_valid
+      end
     end
 
     context '商品購入できない場合' do
