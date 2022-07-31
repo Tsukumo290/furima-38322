@@ -3,13 +3,11 @@ class PurchaseHistoriesController < ApplicationController
   before_action :item_find
 
   def index
-    @item = Item.find(params[:item_id])
     @purchase_history_order = PurchaseHistoryOrder.new
     redirect_to root_path if @item.purchase_history.present? or @item.user.id == current_user.id
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @purchase_history_order = PurchaseHistoryOrder.new(purchase_history_order_params)
     if @purchase_history_order.valid?
       pay_item
