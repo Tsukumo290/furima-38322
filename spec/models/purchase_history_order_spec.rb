@@ -2,7 +2,11 @@ require 'rails_helper'
 
 RSpec.describe PurchaseHistoryOrder, type: :model do
   before do
+    item = {name: "hoge"}
+    user = {nickname: "hoge"}
     @order = FactoryBot.build(:purchase_history_order)
+    @order.item_id = item
+    @order.user_id = user
   end
 
   describe '商品購入機能' do
@@ -74,6 +78,7 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is too short')
       end
+
       it 'phone_numberが「10桁以上11桁以内」の半角数値でないと購入できない' do
         @order.phone_number = '０９０１２３４５６７８'
         @order.valid?
