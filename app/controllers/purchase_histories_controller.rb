@@ -1,5 +1,6 @@
 class PurchaseHistoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :item_find
 
   def index
     @item = Item.find(params[:item_id])
@@ -20,6 +21,10 @@ class PurchaseHistoriesController < ApplicationController
   end
 
   private
+
+  def item_find
+    @item = Item.find(params[:item_id])
+  end
 
   def pay_item
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
