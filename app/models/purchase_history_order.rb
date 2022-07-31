@@ -10,8 +10,8 @@ class PurchaseHistoryOrder
     validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :municipality
     validates :address
-    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: "number is too short" }
-    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "number is invalid. Input only number" }
+    validates :phone_number, format: {with: /\A[0-9０-９]{10,11}\z/, message: "is too short" }
+    validates :phone_number, format: {with: /\A[0-9]+\z/, message: "is invalid. Input only number" }
   end
 
   def save
