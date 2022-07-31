@@ -73,12 +73,12 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
         expect(@order.errors.full_messages).to include('Post code code is invalid. Enter it as follows (e.g. 123-4567)')
       end
 
-      it 'phone_numberが「10桁以上11桁以内」でないと購入できない' do
+      it 'phone_numberが9桁以下だと購入できない' do
         @order.phone_number = '11111'
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is too short')
       end
-      it 'phone_numberが「10桁以上11桁以内」でないと購入できない' do
+      it 'phone_numberが12桁以上だと購入できない' do
         @order.phone_number = '1234567891011'
         @order.valid?
         expect(@order.errors.full_messages).to include('Phone number is too short')
