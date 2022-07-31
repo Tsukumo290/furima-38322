@@ -11,7 +11,7 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
         expect(@order).to be_valid
       end
     end
-    
+
     context '商品購入できない場合' do
       it 'tokenが空では購入できない' do
         @order.token = ''
@@ -57,31 +57,24 @@ RSpec.describe PurchaseHistoryOrder, type: :model do
       it 'post_codeが「3桁ハイフン4桁」でないと購入できない' do
         @order.post_code = '1111-1111'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Post code code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order.errors.full_messages).to include('Post code code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'post_codeが「3桁ハイフン4桁」の半角数値でないと購入できない' do
         @order.post_code = '１１１−１１１１'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Post code code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order.errors.full_messages).to include('Post code code is invalid. Enter it as follows (e.g. 123-4567)')
       end
 
       it 'phone_numberが「10桁以上11桁以内」でないと購入できない' do
         @order.phone_number = '11111'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is too short")
+        expect(@order.errors.full_messages).to include('Phone number is too short')
       end
       it 'phone_numberが「10桁以上11桁以内」の半角数値でないと購入できない' do
         @order.phone_number = '０９０１２３４５６７８'
         @order.valid?
-        expect(@order.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@order.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
-
-
-
     end
-
-
-
   end
-
 end
